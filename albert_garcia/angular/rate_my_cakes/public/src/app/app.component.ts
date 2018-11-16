@@ -15,6 +15,7 @@ export class AppComponent implements OnInit {
   cake = {};
   one: boolean;
   avg: number;
+  error: any;
 
   constructor(private _httpService: HttpService){
 
@@ -31,6 +32,13 @@ export class AppComponent implements OnInit {
       console.log("Added our cake", data);
       this.showCakes();
       this.newCake = {baker:"", img_url: ""};
+      if(data['err']){
+        this.error = data['err']['errors']['baker']['message'];
+        console.log(this.error, "got our errors")
+      }
+      else{
+        this.error = null;
+      }
     })
   }
 
