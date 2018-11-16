@@ -12,7 +12,7 @@ export class BrowseComponent implements OnInit {
     private _httpService: HttpService,
     private _route: ActivatedRoute,
     private _router: Router
-  ) { }
+  ) {};
 
   ngOnInit() {
     this.transactions = this._httpService.shareTransactions();
