@@ -1,0 +1,57 @@
+<!--The content below is only a placeholder and can be replaced.-->
+
+<div class="container">
+  <h2>{{title}}</h2>
+  <div class="container-fluid">
+    <div class="row">
+      <form class="col-4" (submit)="createCake()">
+        <p>Submit a cake to be rated</p>
+      <div class="form-group">
+        <label for="">Baker name:</label>
+        <input class="form-control" type="text" name="newCake.name" [(ngModel)]="newCake.name">
+      </div>
+      <div class="form-group">
+        <label for="">Image url:</label>
+        <input class="form-control" type="text" name="newCake.imageURL" [(ngModel)]="newCake.imageURL">
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="col-8" style="height:500px; overflow-y: scroll">
+    <button type="button" (click)="getAllCakes()">Get All Cakes</button>
+
+    <div class="row mb-3" *ngFor="let cake of cakes">
+      <div class="col-10">
+        <!-- We passed "cake" because it has all the values -->
+        <img (click)="showProfile(cake)" style="width:250px;" src="{{cake.imageURL}}" alt="cakie">
+        <div class="col-10">
+          <!-- We passed "cake" because it has all the values (mostly id)-->
+          <form (submit)="createRating(cake)">
+            <div class="form-group">
+              <label for="rated">Rating:</label>
+              <!-- Particular, round about way to fix from displaying in all boxes -->
+              <!-- Allow different stars for different cake -->
+              <select class="form-control" id="rated" name="cake.stars" [(ngModel)]="cake.stars">
+                <option value="5">5 Stars</option>
+                <option value="4">4 Stars</option>
+                <option value="3">3 Stars</option>
+                <option value="2">2 Stars</option>
+                <option value="1">1 Stars</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <!-- Particular, round about way to fix from displaying in all boxes -->
+              <!-- Allow different comments for different cakes -->
+              <textarea class="form-control" rows="4" placeholder="Type your comment here" name="cake.comment" [(ngModel)]="cake.comment"></textarea>
+            </div>
+            <button class="btn btn-success" type="submit">Rate!</button>
+          </form>
+      </div>
+    </div>
+  </div>
+</div>
+  <app-cake-profile *ngIf="this.cakeToShow" [cake]="cakeToShow"></app-cake-profile>
+
+<router-outlet></router-outlet>

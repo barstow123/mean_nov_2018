@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Quoting Dojo</title>
+</head>
+<body>
+	<h1>Welcome to the Quoting Dojo</h1>
+	<form action='/users' method='post'>
+		<label for='name'>Name: </label>
+		<input id='name' name='name'>
+		<label for='quote'>Quote: </label>
+		<input id='quote' name='quote'>
+		<button type='submit'>add quote!</button>
+	</form>
+	<h2>here are all of the quote</h2>
+	<% for (i in all_quotes) { %>
+	<p><%= all_quotes[i].first_name %>, says: <%= all_quotes[i].quote %> posted_at:<%= all_quotes[i].created_at %> <%= all_quotes[i] %></p>
+	<% } %>
+</body>
+</html>
+</html>

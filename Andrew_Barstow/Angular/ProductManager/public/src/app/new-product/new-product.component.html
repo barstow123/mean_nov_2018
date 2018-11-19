@@ -1,0 +1,19 @@
+<p>
+  new-product works!
+</p>
+<p>except not</p>
+<div class="container col-lg-3 d-inline-block align-top">
+    <form class="form-group" (submit)="postNewProduct()">
+
+      <label for="baker">Product Name:</label>
+      <input class="form-control" type="text" name="newProduct.title" placeholder="Product Title" [(ngModel)]="newProduct.title" >
+
+      <label for="baker">Price:</label>
+      <input class="form-control" type="text" name="newProduct.price" placeholder="Product Title" [(ngModel)]="newProduct.price" >
+
+      <label  for="img">Image URL:</label>
+      <input class="form-control" type="text" name="newProduct.img" placeholder="Image URL" [(ngModel)]="newProduct.img">
+
+      <button type="submit" class="btn btn-success mt-1" name="button">Bake</button>
+    </form>
+</div>

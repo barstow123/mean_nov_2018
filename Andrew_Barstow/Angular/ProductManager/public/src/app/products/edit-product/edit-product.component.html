@@ -1,0 +1,58 @@
+<h3>Product: {{product.title}}</h3>
+<div class='container'>
+  <div class="row">
+    <form [formGroup]='productForm' class="form-group border border-dark rounded" style='padding: 10px;' (submit)="updateCurrentProduct()">
+
+        <label for="baker">Product Name:</label>
+        <input class="form-control" type="text" formControlName='title' name="product.title" placeholder="Product Title" 
+        [(ngModel)]="product.title"
+        required
+        minlength='3'>
+        <div *ngIf='productForm.controls["title"].errors' class='alert alert-danger'>
+          <div *ngIf='productForm.controls["title"].errors.required'>
+            Title is required
+          </div>
+          <div *ngIf='productForm.controls["title"].errors.minlength'>
+            Must be 3 characters
+          </div>
+        </div>
+
+        <label for="baker">Price:</label>
+        <input class="form-control" type="text" formControlName='price' name="product.price" placeholder="Product Price" 
+        [(ngModel)]="product.price"
+        required >
+        <div *ngIf='productForm.controls["price"].errors' class='alert alert-danger'>
+          <div *ngIf='productForm.controls["price"].errors.required'>
+            Price is required
+          </div>
+          <div *ngIf='productForm.controls["price"].errors.min'>
+            cannot be negative
+          </div>
+          <div *ngIf='productForm.controls["price"].errors.pattern'>
+            must be in dollar format XXXX.XX
+          </div>
+        </div>
+        
+        <label for="baker">Quantity:</label>
+        <input class="form-control" type="text" formControlName='qty' name="product.qty" placeholder="Product Quantity" 
+        [(ngModel)]="product.qty"
+        required
+        min='0' >
+        <div *ngIf='productForm.controls["qty"].errors' class='alert alert-danger'>
+          <div *ngIf='productForm.controls["qty"].errors.required'>
+            quantity is required
+          </div>
+          <div *ngIf= 'productForm.controls["qty"].errors.min'>
+            cannot be negative
+          </div>
+          <div *ngIf='productForm.controls["qty"].errors.pattern'>
+            quantity must be a number
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-success mt-1" [disabled]=productForm.invalid name="button">Update</button>
+        <button type='button' class='btn btn-primary mt-1' (click)='resetForm()'>Reset</button>
+        <button type='button' class='btn btn-secondary mt-1' [routerLink]='["/products"]'>Cancel</button>
+      </form>
+  </div>
+</div>

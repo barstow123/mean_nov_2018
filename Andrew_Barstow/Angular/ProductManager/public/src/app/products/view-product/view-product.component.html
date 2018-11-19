@@ -1,0 +1,25 @@
+<h2>{{product.title}} Details:</h2>
+<div class='container border border-dark radius' style='width: 50%; margin-left: 15px;' >
+  <div class='row'>
+    <div class='col-sm'>
+    <div>
+      <h3 style='display: inline-block'>Name:</h3>
+    </div>
+    <div>
+      <h3 style='display: inline-block'>Qty:</h3>
+    </div>
+    <div>
+      <h3 style='display: inline-block'>Price:</h3>
+    </div>
+    </div>
+    <div class='col-sm'>
+        <h6 style='margin-top: 15px;'>{{product.title}}</h6>
+        <h6 style='margin-top: 15px;'>{{product.qty}}</h6>
+        <h6 style='margin-top: 15px;'>{{product.price}}</h6>
+    </div>
+  </div>
+  <button [routerLink]='["/products"]' class='btn btn-primary'>back</button>
+  <button (click)='destroyProduct(product)' [disabled]='product.qty' class='btn btn-danger'>Delete</button>
+
+</div>
+

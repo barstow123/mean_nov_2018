@@ -1,14 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
 	<title>new car</title>
 </head>
 <body>
-	<form> 
-		<label for='name'>make: </label>
-		<input type='text' id='model' name='model'>
+	<form action='/submit_car' method='post'> 
+		<label for='make'>make: </label>
+		<input type='text' id='make'class='info' name='make'>
 		<label for='model'>model: </label>
-		<input type='text' id='model' name='model'>
+		<input type='text' id='model' class='info' name='model'>
+		<label for='description'>description: </label>
+		<textarea name='description' class='info' type='description'></textarea>
 		<button type='submit'>register!</button>
 	</form>
 </body>
